@@ -15,7 +15,7 @@ const initialValue = {
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useForm(false);
   const [values, setValues] = useForm(initialValue);
 
   const handleChanges = (e) => {
@@ -24,6 +24,7 @@ const CheckoutForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem("saveValues", JSON.stringify(values))
     setShowSuccessMessage(true);
   };
 
